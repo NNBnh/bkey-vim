@@ -1,100 +1,71 @@
-# Bkey
-
-> Key-binding that SuperB
+<p align="center">
+    <img src="https://raw.githubusercontent.com/SakashiNNB/bkey/master/image/bkey-logo.png">
+</p>
 
 ## About
 
-Đây là tài liệu cho tư tương (mind-set) key-binding Bkey. đây là design guidelines, detailed technical views of Bkey.
+This is a port of [Bkey](https://github.com/SakashiNNB/bkey) to vim.
 
-Tài liệu này được lấy cảm hứng từ [Blog của Xah về bàn phím](http://xahlee.info/kbd/keyboarding.html)
-
-### Story
-
-Sau khi thiết kế Blayout, tôi cuốn theo [Blog của Xah về bàn phím](http://xahlee.info/kbd/keyboarding.html) và tìm đến Emacs và rồi cả [Ergoemacs](https://ergoemacs.github.io/). Nhưng cả hai cái tôi đêề thấy có nhiều điều không hợp lí, mà có lẽ bản thân Emacs và tôi không hợp nhau, cháu này thì được cái tùy chỉnh tùy biến nhiều mê li nhưng có nhiều cái lại không thể thay đổi được ...
-
-Một thời gian sau tôi tìm đến Vim và thấy rằng Vim out-of-the-box đã có nhiều cái tiện lợi hơn Emacs mà lại còn ií cồng kềnh, tôi ngay lập tức mang cái thiết kế key-binding nửa mùa bên Emacs sang bên này và hoàn thiện nốt.
-
-### Features
-
-  * Dễ làm quen với nhiều key-binding đã xuất hiện ở các phần mềm nổi tiếng:
-    * Tất cả các nút <kbd>MŨI-TÊN</kbd>, <kbd>SPACE</kbd>, <kbd>ENTER</kbd>, <kbd>BS</kbd>, <kbd>DEL</kbd>, <kbd>ESC</kbd>, <kbd>TAB</kbd>... hành xử quen thuộc
-    * Các nút <kbd>Ctrl</kbd> + <kbd>z</kbd>,<kbd>x</kbd>,<kbd>c</kbd>,<kbd>v</kbd> để Undo, Cut, Copy, Paste. Tương tự với các nút bắt đầu với <kbd>Ctrl</kbd> khác
-  * Giúp người dùng thoải:
-    * Giúp người dùng tránh phải sử dụng các nút ngón út và ngón nhẫn:
-      * [Đánh giá các ngón]()
-    * Ngón trỏ luôn đặt đúng vị trí trên bàn phím thuận lợi cho việc đánh máy mà phông cần phải chuyển lệch:
-      * [WASD hay ESDF]()
-      * [HJKL hay IJKL]()
-  * Thậm chí còn tương thích được với việc chơi game
+*(In beta)*
 
 ## Contents
 
   * [About](#about)
-    * [Story](#story)
-    * [Features](#features)
   * [Contents](#contents)
-  * [References](#references)
-    * [Operation](#operation)
-    * [Movements](#movements)
-    * [Actions](#actions)
-    * [Application](#application)
-    * [Views](#views)
-  * [Vim](#vim)
-  * [TODO/FIXME]()
+  * [Documentation](#references)
+  * [TODO/FIXME](#todo%2Ffixme)
 
-## References
+## Documentation
 
-### Operation
+\#TODO
 
-![](image/operation.png)
+### Normal
 
-  * Hold keys:
-    * Các nút tự bản thân nó không làm gì nhưng khi kết hợp với các nút khác sẽ giúp các nút đó mang ý nghĩa khác:
-      * <kbd>Shift</kbd>:
-        * Khỏe hơn, nhanh hơn, mang phạm vi lớn hơn (từ điểm bắt đầu đêế cuối dòng, cuối file...).
-        * Theo hương ngược lại (ví dụ: Undo thành Redo).
-        * nếu phím ban đâu là hành động Load thì khi giữ <kbd>Shift</kbd> sẽ là lưu.
-        * Nếu có một hành động nào đấy mà được sử dụng rất nhiều mà các vị trí khác không hợp lí thì hãn hưu lắm mới dùng <kbd>Shift</kbd> sai quy định.
-      * <kbd>Ctrl</kbd>:
-        * Kiểm soát, kĩ càng, tập trung.
-      * <kbd>Alt</kbd>:
-        * Nếu ở trong môi trường mà các nút trần đã có nhiệm vụ khác (như trong môi trường viết chữ, các nút trần đã có nhiệm vụ gửi kí tự) thì <kbd>Alt</kbd> Sẽ là nút <kbd>Mod</kbd> nếu không nó sẽ là <kbd>Alt</kbd>.
-          * <kbd>Mod</kbd>:
-            * Làm hành động.
-          * <kbd>Alt</kbd>:
-            * Làm theo cách khác, hành động ít được sử dụng hơn.
-      * <kbd>Super</kbd>:
-        * Ở Windows thì tên là <kbd>Windows</kbd>, trên Linux là <kbd>Super</kbd> còn MacOS là <kbd>Command</kbd>. Đây là nút duy nhất (Không sử dụng <kbd>Alt</kbd> hay <kbd>Ctrl</kbd> + <kbd>Alt</kbd>) để xử lí các hành động mang phạm vi trên hệ điều hành như quan lí cửa sổ, Shortcut để mở úng dụng ...
-  * Number keys:
-    * Làm hành động mang tên hoọă ở vị trí của số.
-    * Dùng để gàn số lần làm một hành động gì đó.
+[![](images/bkey-vim.png)](http://www.keyboard-layout-editor.com/#/gists/7a9601c5dc623846f20e84b336453901)
 
-### Movements
+#### Holding <kbd>CTRL</kbd>
 
-![](image/movements/1.png)
+[![](images/bkey-vim-ctrl.png)](http://www.keyboard-layout-editor.com/#/gists/ab77e03b93ba762c1e8e9529e992cbf2)
 
-  * <kbd>i</kbd>, <kbd>j</kbd>, <kbd>k</kbd>, <kbd>l</kbd>:
-    * Các nút để di chuyển cở bản Up, Down, Left, Right.
-    * <kbd>i</kbd>, <kbd>k</kbd>:
-      * Di chuyển lên/xuống 1 dòng, giữ <kbd>Shift</kbd> để di chuyển theo từng khổ.
-    * <kbd>j</kbd>, <kbd>l</kbd>:
-      * Di chuyển sang trái/phải 1 kí tự, giữ <kbd>Shift</kbd> để di chuyển theo từng từ.
-  * <kbd>u</kbd>, <kbd>o</kbd>:
-    * Dựa theo thiết kế của một số loại bàn phím laptop #TODO.
-    * Di chuyển sang trái/phải 1 TỪ, giữ <kbd>Shift</kbd> để di chuyển lên/xuống từng trang.
-    * Ngó sang trái/phải.
-    * Xoay theo chiều ngược/thuận kim đồng hồ.
-  * <kbd>m</kbd>:
-    * Đi đến vị trí đầu, giữ <kbd>Shift</kbd> để di chuyển đến cuối.
-    * #TODO
+### Goto key <kbd>G</kbd>
 
+[![](images/bkey-vim-goto.png)](http://www.keyboard-layout-editor.com/#/gists/2f3b61d5a62a7db5bbf92c661faa8870)
 
-![](image/movements/2.png)
+### Next & Previous keys <kbd>\[</kbd>, <kbd>\]</kbd>
 
-  * <kbd>g</kbd>:
-    * Lấy vị trí <kbd>g</kbd> từ Vim, Chỉ vị trí, di chuyển nhanh đến một vị trí nào đó.
-  * <kbd>h</kbd>:
-    * Lấy vị trí <kbd>Ctrl + h</kbd> trên các text-editor phổ biến làm hành động tìm kiếm và thay thế trên các phần mềm khác.
-    * Bình thường chỉ để tìm kiếm, làm gắt thì vừ tìm vừa thay thế.
-  * <kbd>n</kbd>:
-    * Lấy vị trí <kbd>n</kbd> từ Vim, tìm tiếp tực và tìm ngược hướng.
+[![](images/bkey-vim-next-&-previous.png)](http://www.keyboard-layout-editor.com/#/gists/0c123201204095f407b3780744ec542c)
+
+### Spell-checks key  <kbd>SHIFT</kbd> + <kbd>/</kbd>
+
+[![](images/bkey-vim-spell-checks.png)](http://www.keyboard-layout-editor.com/#/gists/c01fd54a00b3a09f02c9369b5c4e4e5f)
+
+### Repeat key <kbd>R</kbd>
+
+[![](images/bkey-vim-repeat.png)](http://www.keyboard-layout-editor.com/#/gists/0036c2ca221675c189243c2cf092b593)
+
+### Fold key <kbd>'</kbd>
+
+[![](images/bkey-vim-fold.png)](http://www.keyboard-layout-editor.com/#/gists/edc3d0793ccba11abf8405d377f85b5a)
+
+### Views key <kbd>\\</kbd>
+
+[![](images/bkey-vim-views.png)](http://www.keyboard-layout-editor.com/#/gists/f8d8bd219c309a570100d29c39522645)
+
+# TODO/FIXME
+
+  * [ ] Idea
+    * [ ] <kbd>Q</kbd>
+    * [ ] <kbd>SHIFT</kbd> + <kbd>0</kbd>-<kbd>9</kbd>
+    * [ ] <kbd>F1</kbd>-<kbd>F12</kbd>
+</br></br>
+  * [ ] Fuctions
+    * [ ] <kbd>D</kbd> *(Smart delete)*
+    * [ ] <kbd>SHIFT</kbd> + <kbd>M</kbd> *(Smart Bol)*
+    * [ ] <kbd>ENTER</kbd> *(Insert one)*
+    * [ ] Move line with count
+    * [ ] Fix line-wrap movement: when move to the left at bol it move into the last character (before it) of the upper line but not after the character
+    * [ ] Fix visual mode movement: move to end of word when the cursor is before the selection is move not correct
+    * [ ] Fix visual-block mode
+</br></br>
+  * [ ] Make full doc
+  * [ ] Support for other plug-ins

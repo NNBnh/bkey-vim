@@ -182,7 +182,7 @@ else
 	endfunction
 endif
 
-" Status line #TODO
+" Info
 function! BKeyInfo()
 	if ( g:bkey_info == '0' )
 		let g:bkey_info = 1
@@ -447,40 +447,33 @@ noremap <F9> :tabedit<Space>$HOME/.config/nvim/init.vim<CR>
 " #FIXME line-wrap move left to upper line true far right
 "        visual mode cursor befor selection
 noremap i g<Up>
+noremap <Leader>i <Up>
 noremap k g<Down>
+noremap <Leader>k <Down>
 noremap j <Left>
 noremap l <Right>
 noremap I {
-noremap <Leader>I (
 noremap K }
-noremap <Leader>K )
 noremap J b
-noremap <Leader>J <Left>ge
-nnoremap <Leader>J <Left>ge<Right>
 noremap L e
 nnoremap L e<Right>
-noremap <Leader>L w
-nnoremap <Leader>L w<Right>
 
 " }}}
 
 " Advance {{{
 
 noremap u B
-noremap <Leader>u <Left>gE
-nnoremap <Leader>u <Left>gE<Right>
 noremap o E
 nnoremap o E<Right>
-noremap <Leader>o W
 noremap U <Pageup>
 noremap O <Pagedown>
 noremap n n
 noremap N N
 noremap m ^
-noremap <Leader>m <Home>
 noremap M <End>
 nnoremap M <End>g<End>
-noremap <Leader>M <End>
+noremap <Leader>m g<Home>
+noremap <Leader>M g<End>
 
 " }}}
 
@@ -492,20 +485,26 @@ noremap G <C-End>
 nnoremap G <C-End><Right>
 
 " Advance
-noremap g<Up> g<Up>
-noremap g<Down> g<Down>
-noremap gi <Up>
-noremap gk <Down>
+noremap gI (
+noremap gK )
+noremap gJ <Left>ge
+nnoremap gJ <Left>ge<Right>
+noremap gL w
+nnoremap gL w<Right>
+noremap gu <Left>gE
+nnoremap gu <Left>gE<Right>
+noremap go W
+noremap gm <Home>
+noremap gM <End>
 noremap gd [c
 noremap gD ]c
 noremap gf g;
 noremap gF g,
-noremap gm g<Home>
-noremap gM g<End>
 
 " Visual
 noremap gs gv
 vnoremap gs o
+noremap gS gv
 vnoremap gS O
 
 " Folds
@@ -561,15 +560,10 @@ noremap < m
 
 " Deletes {{{
 
-" #FIXME Shift-BS/Del do shit no good
 noremap <BS> ""X
 vnoremap <BS> ""<Del>
-noremap <S-BS> ""de
-vnoremap <S-BS> ""<Del>
 noremap <Del> ""x
 vnoremap <Del> ""<Del>
-noremap <S-Del> ""db
-vnoremap <S-Del> ""<Del>
 noremap d ""X
 vnoremap d ""<Del>
 noremap D ""x
@@ -672,14 +666,6 @@ noremap A<Space> A
 " Moves {{{
 
 " #FIXME move with count
-noremap b<Up> :m<Space>.-2<CR>
-vnoremap b<Up> :m<Space>'<-2<CR>
-noremap b<Down> :m<Space>.+1<CR>
-vnoremap b<Down> :m<Space>'>+1<CR>
-noremap b<Left> <<
-vnoremap b<Left> <
-noremap b<Right> >>
-vnoremap b<Right> >
 noremap bi :m<Space>.-2<CR>
 vnoremap bi :m<Space>'<-2<CR>
 noremap bk :m<Space>.+1<CR>
@@ -698,10 +684,6 @@ if (g:bkey_keepsele_move == '1')
 	vnoremap bk :m<Space>'>+1<CR>gv
 	vnoremap bj <gv
 	vnoremap bl >gv
-	vnoremap b<Up> :m<Space>'<-2<CR>gv
-	vnoremap b<Down> :m<Space>'>+1<CR>gv
-	vnoremap b<Left> <gv
-	vnoremap b<Right> >gv
 endif
 
 " }}}
@@ -732,20 +714,6 @@ vnoremap <Leader>bbr ~
 vnoremap <Leader>Bi U
 vnoremap <Leader>Bk u
 vnoremap <Leader>Br ~
-noremap <Leader>b<Up> gU
-noremap <Leader>b<Down> gu
-noremap <Leader>bb<Up> <Home>gU<End>
-noremap <Leader>bb<Down> <Home>gu<End>
-noremap <Leader>B<Up> gU<End>
-noremap <Leader>B<Down> gu<End>
-vnoremap B<Up> U
-vnoremap B<Down> u
-vnoremap <Leader>b<Up> U
-vnoremap <Leader>b<Down> u
-vnoremap <Leader>bb<Up> U
-vnoremap <Leader>bb<Down> u
-vnoremap <Leader>B<Up> U
-vnoremap <Leader>B<Down> u
 
 " Keep selection
 if (g:bkey_keepsele_case == '1')
@@ -761,14 +729,6 @@ if (g:bkey_keepsele_case == '1')
 	vnoremap <Leader>Bi Ugv
 	vnoremap <Leader>Bk ugv
 	vnoremap <Leader>Br ~gv
-	vnoremap B<Up> Ugv
-	vnoremap B<Down> ugv
-	vnoremap <Leader>b<Up> Ugv
-	vnoremap <Leader>b<Down> ugv
-	vnoremap <Leader>bb<Up> Ugv
-	vnoremap <Leader>bb<Down> ugv
-	vnoremap <Leader>B<Up> Ugv
-	vnoremap <Leader>B<Down> ugv
 endif
 
 " }}}
@@ -783,6 +743,8 @@ noremap / <C-]>
 noremap ?? z=
 noremap ?n ]s
 noremap ?N [s
+noremap ?[ [s
+noremap ?] ]s
 noremap ?d zg
 noremap ?D zG
 noremap ?f zw
@@ -791,13 +753,6 @@ noremap ?zd zug
 noremap ?zD zuG
 noremap ?zf zuw
 noremap ?zF zuW
-
-" Repeat
-noremap rr .
-noremap r; @:
-noremap r: @:
-noremap rH g&
-noremap ry @@
 
 " Math {{{
 
@@ -822,11 +777,18 @@ noremap Z <C-r>
 noremap f <Undo>
 noremap F <C-r>
 
+" Repeat
+noremap rr .
+noremap r; @:
+noremap rH g&
+noremap ry @@
+
 " Macros
 noremap y @
 noremap Y q
 
 " Files
+noremap <Leader>, :e<Space>
 noremap . :w<CR>
 noremap > :w<Space>
 
@@ -839,42 +801,41 @@ noremap > :w<Space>
 noremap Q :call<Space>BKeyInfo()<CR>
 
 " Fold
-noremap <Leader>'' zi
 noremap '' za
-noremap '" zA
+noremap <Leader>'' zA
 noremap 'm [z
 noremap 'M ]z
-noremap 'd zo
-noremap <Leader>'d zv
-noremap 'D zO
-noremap <Leader>'D zR
+noremap 'd zv
+noremap <Leader>'d zO
+noremap 'D zR
 noremap 'f zc
-noremap <Leader>'f zM
-noremap 'F zC
-noremap <Leader>'F zM
+noremap <Leader>'f zC
+noremap 'F zM
+noremap 'u zx
+noremap <Leader>'u zX
 noremap '- zm
 noremap '_ zm
 noremap '= zr
 noremap '+ zr
-noremap 'r zX
 noremap 'p zf
 noremap 'P zF
 noremap 'x zd
 noremap 'X zD
 noremap <Leader>'X zE
 noremap '<BS> zd
-noremap '<S-BS> zD
+noremap <Leader>'<BS> zE
 noremap '<Del> zd
-noremap '<S-Del> zD
+noremap <Leader>'<Del> zE
 
 " Advance {{{
 
 noremap <Bslash><Bslash> zz
 noremap <Bar> :set<Space>wrap!<CR>
 noremap <Bslash>' zi
+noremap <Leader>'' zi
 
 noremap <Bslash>Q :call<Space>BKeyInfo()<CR>
-noremap <Bslash>. :Lexplore<CR>
+noremap <Leader><Bslash>, :Lexplore<CR>
 noremap <Bslash>h :nohlsearch<CR>
 noremap <Bslash>, :marks<CR>
 noremap <Bslash>? :set<Space>spell!<CR>
@@ -886,14 +847,6 @@ noremap <Bslash>j z<Left>
 noremap <Bslash>J zH
 noremap <Bslash>l z<Right>
 noremap <Bslash>L zL
-noremap <Bslash><Up> <C-y>
-noremap <Bslash><S-Up> <C-u>
-noremap <Bslash><Down> <C-e>
-noremap <Bslash><S-Down> <C-d>
-noremap <Bslash><Left> z<Left>
-noremap <Bslash><S-Left> zH
-noremap <Bslash><Right> z<Right>
-noremap <Bslash><S-Right> zL
 noremap <Bslash>u ze
 noremap <Bslash>o zs
 noremap <Bslash>U zb
@@ -1131,7 +1084,6 @@ noremap! <Del> <Del>
 noremap! <M-Del> <Del>
 noremap! <BS> <BS>
 noremap! <M-BS> <BS>
-noremap! <M-S-BS> <C-w>
 
 " Paste
 noremap! <M-v> <C-r>+
